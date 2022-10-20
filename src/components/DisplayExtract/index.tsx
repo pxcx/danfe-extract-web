@@ -6,7 +6,7 @@ function DisplayExtract() {
   let { packageID } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/packages/${packageID}/extract-items`)
+    fetch(`http://cloud.pxcx.com.br:5000/packages/${packageID}/extract-items`)
       .then((res) => res.json())
       .then((data) => {
         setExtract(data.extract);
@@ -16,6 +16,10 @@ function DisplayExtract() {
   return (
     <div>
       <p>Resultados do pacote: {packageID}</p>
+
+      <p>
+        <a href="/">Voltar</a>
+      </p>
 
       <table border={1} width={"100%"}>
         <thead>
@@ -35,16 +39,16 @@ function DisplayExtract() {
         <tbody>
           {extract.map((danfeItem: any, key: number) => (
             <tr key={key}>
-              <td style={{ textAlign: "center" }}>{key}</td>
-              <td>{danfeItem.description}</td>
-              <td style={{ textAlign: "center" }}>{danfeItem.ncm}</td>
-              <td style={{ textAlign: "center" }}>{danfeItem.cst}</td>
-              <td style={{ textAlign: "center" }}>{danfeItem.cfop}</td>
-              <td style={{ textAlign: "center" }}>{danfeItem.aliqIcms}</td>
-              <td style={{ textAlign: "center" }}>{danfeItem.aliqPis}</td>
-              <td style={{ textAlign: "center" }}>{danfeItem.aliqCofins}</td>
-              <td style={{ textAlign: "center" }}>{danfeItem.origem}</td>
-              <td style={{ textAlign: "center" }}>{danfeItem.cest}</td>
+              <td>{key}</td>
+              <td style={{ textAlign: "left" }}>{danfeItem.description}</td>
+              <td>{danfeItem.ncm}</td>
+              <td>{danfeItem.cst}</td>
+              <td>{danfeItem.cfop}</td>
+              <td>{danfeItem.aliqIcms}</td>
+              <td>{danfeItem.aliqPis}</td>
+              <td>{danfeItem.aliqCofins}</td>
+              <td>{danfeItem.origem}</td>
+              <td>{danfeItem.cest}</td>
             </tr>
           ))}
         </tbody>
