@@ -28,7 +28,7 @@ function App() {
 
       <p>
         Feito com{" "}
-        <span style={{ color: "red", fontSize: 18, margin: "5px" }}> ♥ </span>
+        <span style={{ color: "red", fontSize: 17, margin: "5px" }}> ♥ </span>
         para{" "}
         <span
           style={{ cursor: "pointer", color: "blue", fontWeight: "bold" }}
