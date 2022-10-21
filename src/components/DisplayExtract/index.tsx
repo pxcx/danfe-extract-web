@@ -6,7 +6,7 @@ function DisplayExtract() {
   let { packageID } = useParams();
 
   useEffect(() => {
-    fetch(`http://cloud.pxcx.com.br:5000/packages/${packageID}/extract-items`)
+    fetch(`https://cloud.pxcx.com.br:5000/packages/${packageID}/extract-items`)
       .then((res) => res.json())
       .then((data) => {
         setExtract(data.extract);

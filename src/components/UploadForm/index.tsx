@@ -15,7 +15,7 @@ function UploadForm() {
       const formData = new FormData();
       formData.append("danfePackage", selectedFile);
 
-      fetch("http://cloud.pxcx.com.br:5000/upload-package", {
+      fetch("https://cloud.pxcx.com.br:5000/upload-package", {
         method: "POST",
         body: formData,
       })
