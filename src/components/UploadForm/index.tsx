@@ -36,7 +36,11 @@ function UploadForm() {
       <p>
         <input type="file" name="danfePackageInput" onChange={onFileSelected} />
       </p>
-      <button disabled={selectedFile === null} onClick={submitFile}>
+      <button
+        className="my-5 py-3 px-5 bg-red-500"
+        disabled={selectedFile === null}
+        onClick={submitFile}
+      >
         Enviar
       </button>
     </div>

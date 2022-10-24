@@ -8,7 +8,7 @@ function App() {
   const [easterEgg, setEasterEgg] = useState<string>("Iraci!");
 
   function handleEasterEggIn(event: any) {
-    setEasterEgg("Pirizinha!");
+    setEasterEgg("Piririzinha!");
   }
 
   function handleEasterEggOut(event: any) {
@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <h1>Danfe Extract</h1>
+      <h1 className="text-3xl my-6 font-bold">Danfe Extract</h1>
 
       <Router>
         <Routes>
