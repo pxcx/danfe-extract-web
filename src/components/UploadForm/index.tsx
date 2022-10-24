@@ -1,4 +1,4 @@
-import { ChangeEventHandler, SetStateAction, useState } from "react";
+import { useState } from "react";
 
 function UploadForm() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -29,20 +29,22 @@ function UploadForm() {
 
   return (
     <div>
-      <p style={{ display: `${packageId ? "block" : "none"}` }}>
-        <a href={"/package/" + packageId}>Clique aqui para ver o resultado.</a>
-      </p>
+      
       <p>Adicione um arquivo .zip contendo todos os arquivos .xml</p>
-      <p>
+      <p className="py-5">
         <input type="file" name="danfePackageInput" onChange={onFileSelected} />
       </p>
+      <p style={{ display: `${packageId ? "block" : "none"}` }}>
+        <a className="block pb-5 underline-offset-8 underline text-green-700 hover:text-green-900 font-bold" href={"/package/" + packageId}>Clique aqui para ver o resultado.</a>
+      </p>
       <button
-        className="my-5 py-3 px-5 bg-red-500"
+        className={`my-5 py-2 px-6 border-solid border-2 rounded-xl font-bold ${selectedFile === null ? "border-gray-400 text-gray-400" : "cursor-pointer border-blue-600 hover:border-blue-400 text-blue-600 hover:text-blue-400"}`}
         disabled={selectedFile === null}
         onClick={submitFile}
       >
         Enviar
       </button>
+      
     </div>
   );
 }

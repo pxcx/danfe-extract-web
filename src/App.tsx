@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <h1 className="text-3xl my-6 font-bold">Danfe Extract</h1>
+      <h1 className="text-3xl my-6 font-bold text-blue-700">Danfe Extract</h1>
 
       <Router>
         <Routes>
@@ -27,11 +27,9 @@ function App() {
       </Router>
 
       <p>
-        Feito com{" "}
-        <span style={{ color: "red", fontSize: 17, margin: "5px" }}> ♥ </span>
-        para{" "}
-        <span
-          style={{ cursor: "pointer", color: "blue", fontWeight: "bold" }}
+        Feito com <span className="text-red-500"> ♥ </span>
+        para <span
+          className="cursor-pointer text-blue-600 font-bold"
           onMouseEnter={handleEasterEggIn}
           onMouseLeave={handleEasterEggOut}
         >
