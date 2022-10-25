@@ -1,6 +1,6 @@
 import { AxiosError, AxiosResponse } from "axios";
 import { Dispatch } from "react";
-import { backendService } from "src/services/backend";
+import { backendService } from "../../services/backend";
 import { appLoading, appLoadingFinished } from "../application/actions";
 import {
   UploadActionClearError,
