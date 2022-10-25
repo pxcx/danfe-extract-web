@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { actionCreators, State } from "../../store";
 import { ReportItem } from "../../types/ReportItem";
+import Button from "../FormControl/Button";
 
 function DisplayExtract() {
   const { packageID } = useParams();
@@ -12,6 +13,7 @@ function DisplayExtract() {
     (state: State) => state.packageReport
   );
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { reset, retrieveReportData } = bindActionCreators(
     actionCreators.packageReport,
     dispatch
@@ -24,13 +26,15 @@ function DisplayExtract() {
     }
   }, [packageID]);
 
+  function handleBackButton() {
+    navigate("/");
+  }
+
   return (
     <div>
       <p>Resultados do pacote: {packageID}</p>
 
-      <p>
-        <a href="/">Voltar</a>
-      </p>
+      <Button onClick={handleBackButton}>Voltar</Button>
 
       {loading ? (
         <p>Carregando...</p>

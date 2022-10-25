@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators, State } from "../../store";
+import Button from "../FormControl/Button";
 
 function UploadForm() {
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
@@ -56,17 +57,9 @@ function UploadForm() {
         </a>
       </p>
 
-      <button
-        className={`my-5 py-2 px-6 border-solid border-2 rounded-xl font-bold ${
-          selectedFile === undefined
-            ? "border-gray-400 text-gray-400"
-            : "cursor-pointer border-blue-600 hover:border-blue-400 text-blue-600 hover:text-blue-400"
-        }`}
-        disabled={selectedFile === undefined}
-        onClick={submitFile}
-      >
+      <Button disabled={selectedFile === undefined} onClick={submitFile}>
         Enviar
-      </button>
+      </Button>
     </div>
   );
 }
