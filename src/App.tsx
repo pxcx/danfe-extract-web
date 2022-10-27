@@ -26,9 +26,10 @@ function App() {
         </Routes>
       </Router>
 
-      <p>
+      <p className="pb-10">
         Feito com <span className="text-red-500"> ♥ </span>
-        para <span
+        para{" "}
+        <span
           className="cursor-pointer text-blue-600 font-bold"
           onMouseEnter={handleEasterEggIn}
           onMouseLeave={handleEasterEggOut}

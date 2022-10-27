@@ -6,7 +6,7 @@ interface ButtonProps {
 
 function Button(props: ButtonProps) {
   const disabled = props.disabled === undefined ? false : props.disabled;
-  console.log(disabled);
+
   return (
     <button
       className={`my-5 py-2 px-6 border-solid border-2 rounded-xl font-bold ${

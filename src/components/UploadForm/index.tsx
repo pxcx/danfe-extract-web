@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators, State } from "../../store";
 import Button from "../FormControl/Button";
+import { Box } from "../UI/Box";
+import { ErrorMessage } from "../UI/ErrorMessage";
 
 function UploadForm() {
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
@@ -31,15 +33,11 @@ function UploadForm() {
   }
 
   return (
-    <div>
-      <p
-        className={`${
-          error ? "block" : "hidden"
-        } p-3 w-1/2 mx-auto my-5 border-2 border-solid border-red-500 rounded-xl bg-red-100 text-red-600`}
-      >
-        <b>Error:</b> {error}
+    <Box>
+      <ErrorMessage error={error} />
+      <p className="my-5 font-bold">
+        Adicione um arquivo .zip contendo todos os arquivos .xml
       </p>
-      <p>Adicione um arquivo .zip contendo todos os arquivos .xml</p>
       <p className="py-5">
         <input
           type="file"
@@ -60,7 +58,7 @@ function UploadForm() {
       <Button disabled={selectedFile === undefined} onClick={submitFile}>
         Enviar
       </Button>
-    </div>
+    </Box>
   );
 }
 

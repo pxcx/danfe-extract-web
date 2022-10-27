@@ -5,6 +5,8 @@ import { bindActionCreators } from "redux";
 import { actionCreators, State } from "../../store";
 import { ReportItem } from "../../types/ReportItem";
 import Button from "../FormControl/Button";
+import { Box } from "../UI/Box";
+import { ErrorMessage } from "../UI/ErrorMessage";
 
 function DisplayExtract() {
   const { packageID } = useParams();
@@ -32,49 +34,91 @@ function DisplayExtract() {
 
   return (
     <div>
-      <p>Resultados do pacote: {packageID}</p>
-
       <Button onClick={handleBackButton}>Voltar</Button>
-
       {loading ? (
-        <p>Carregando...</p>
+        <p className="my-5 text-xl font-bold">Carregando...</p>
       ) : error !== undefined ? (
-        <p>Erro: {error}</p>
+        <div>
+          <ErrorMessage error={error} />
+        </div>
       ) : (
-        <table border={1} width={"100%"}>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>description</th>
-              <th>ean</th>
-              <th>ncm</th>
-              <th>cst</th>
-              <th>cfop</th>
-              <th>aliqIcms</th>
-              <th>aliqPis</th>
-              <th>aliqCofins</th>
-              <th>origem</th>
-              <th>cest</th>
-            </tr>
-          </thead>
-          <tbody>
-            {reportData.map((danfeItem: ReportItem, key: number) => (
-              <tr key={key}>
-                <td>{key}</td>
-                <td style={{ textAlign: "left" }}>{danfeItem.description}</td>
-                <td>{danfeItem.ean}</td>
-                <td>{danfeItem.ncm}</td>
-                <td>{danfeItem.cst}</td>
-                <td>{danfeItem.cfop}</td>
-                <td>{danfeItem.aliqIcms}</td>
-                <td>{danfeItem.aliqPis}</td>
-                <td>{danfeItem.aliqCofins}</td>
-                <td>{danfeItem.origem}</td>
-                <td>{danfeItem.cest}</td>
+        <Box>
+          <h1 className="mb-8 text-xl">
+            Resultados do pacote: <b>{packageID}</b>
+          </h1>
+          <table className="border border-collapse border-slate-500 text-xs">
+            <thead>
+              <tr>
+                <th className="p-1 bg-slate-300 border border-collapse border-slate-500 text-left w-1/2 overflow-clip">
+                  Description
+                </th>
+                <th className="p-1 bg-slate-300 border border-collapse border-slate-500">
+                  GTIN/EAN
+                </th>
+                <th className="p-1 bg-slate-300 border border-collapse border-slate-500">
+                  NCM
+                </th>
+                <th className="p-1 bg-slate-300 border border-collapse border-slate-500">
+                  CST
+                </th>
+                <th className="p-1 bg-slate-300 border border-collapse border-slate-500">
+                  CFOP
+                </th>
+                <th className="p-1 bg-slate-300 border border-collapse border-slate-500">
+                  Orig
+                </th>
+                <th className="p-1 bg-slate-300 border border-collapse border-slate-500">
+                  ICMS
+                </th>
+                <th className="p-1 bg-slate-300 border border-collapse border-slate-500">
+                  PIS
+                </th>
+                <th className="p-1 bg-slate-300 border border-collapse border-slate-500">
+                  COFINS
+                </th>
+                <th className="p-1 bg-slate-300 border border-collapse border-slate-500">
+                  CEST
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {reportData.map((danfeItem: ReportItem, key: number) => (
+                <tr key={key}>
+                  <td className="p-1 border border-collapse border-slate-500 text-left w-1/2 overflow-clip">
+                    {danfeItem.description}
+                  </td>
+                  <td className="p-1 border border-collapse border-slate-500">
+                    {danfeItem.ean}
+                  </td>
+                  <td className="p-1 border border-collapse border-slate-500">
+                    {danfeItem.ncm}
+                  </td>
+                  <td className="p-1 border border-collapse border-slate-500">
+                    {danfeItem.cst}
+                  </td>
+                  <td className="p-1 border border-collapse border-slate-500">
+                    {danfeItem.cfop}
+                  </td>
+                  <td className="p-1 border border-collapse border-slate-500">
+                    {danfeItem.origem}
+                  </td>
+                  <td className="p-1 border border-collapse border-slate-500">
+                    {danfeItem.aliqIcms}
+                  </td>
+                  <td className="p-1 border border-collapse border-slate-500">
+                    {danfeItem.aliqPis}
+                  </td>
+                  <td className="p-1 border border-collapse border-slate-500">
+                    {danfeItem.aliqCofins}
+                  </td>
+                  <td className="p-1 border border-collapse border-slate-500">
+                    {danfeItem.cest}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Box>
       )}
     </div>
   );
